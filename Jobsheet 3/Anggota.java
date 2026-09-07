@@ -1,8 +1,8 @@
 public class Anggota {
     private String noKtp;
     private String nama;
-    int limitPinjaman;
-    int jumlahPinjaman;
+    private int limitPinjaman;
+    private int jumlahPinjaman;
 
     public Anggota(String noKtp, String nama, int limitPinjaman) {
         this.noKtp = noKtp;
@@ -13,7 +13,7 @@ public class Anggota {
     public String getNoKtp() {
         return noKtp;
     }
-    
+
     public String getNama() {
         return nama;
     }
@@ -35,6 +35,10 @@ public class Anggota {
     }
 
     public void angsur(int angsuran) {
-        jumlahPinjaman -= angsuran;
+        if (angsuran >= 0.1 * jumlahPinjaman) {
+            jumlahPinjaman -= angsuran;
+        } else {
+            System.out.println("Maaf, angsuran harus 10% dari jumlah pinjaman");
+        }
     }
 }
